@@ -34,22 +34,56 @@
 </head>
 
 <body>
+  
+<div style="margin:20px;">
+  <button onclick="filterDesign('all')">All</button>
+  <button onclick="filterDesign('bridal')">Bridal</button>
+  <button onclick="filterDesign('simple')">Simple</button>
+  <button onclick="filterDesign('party')">Party</button>
+</div>
 
 <h1>Blouse Design Gallery</h1>
 
-<div class="card">
-  <img src="blouse2.jpeg" />
-  <p>Bridal Design</p>
+<div class="gallery">
+
+  <!-- Bridal -->
+  <div class="card bridal">
+    <img src="blouse2.jpeg" />
+    <p>Bridal Design</p>
+  </div>
+
+  <!-- Simple -->
+  <div class="card simple">
+    <img src="blouse3.jpeg" />
+    <p>Simple Design</p>
+  </div>
+
+  <!-- Party -->
+  <div class="card party">
+    <img src="blouse4.jpeg" />
+    <p>Party Wear</p>
+  </div>
+
 </div>
 
-<div class="card">
-  <img src="blouse3.jpeg" />
-  <p>Simple Design</p>
 </div>
+  <script>
+function filterDesign(category) {
+  let cards = document.getElementsByClassName("card");
 
-<div class="card">
-  <img src="blouse4.jpeg" />
-  <p>Party Wear</p>
-</div>
+  for (let i = 0; i < cards.length; i++) {
+    if (category === "all") {
+      cards[i].style.display = "block";
+    } else {
+      if (cards[i].classList.contains(category)) {
+        cards[i].style.display = "block";
+      } else {
+        cards[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+
 </body>
 </html>
