@@ -13,7 +13,8 @@
     }
 
     h1 {
-      background: linear-gradient(to right, #ff4081, #ff80ab);
+  background: linear-gradient(to right, #ff4081, #ff80ab);
+}
       color: white;
       padding: 20px;
       margin: 0;
@@ -166,6 +167,33 @@
       border: none;
       cursor: pointer;
     }
+    .header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+  background: linear-gradient(to right, #ff4081, #ff80ab);
+  color: white;
+  padding: 15px 20px;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.tagline {
+  margin: 0;
+  font-size: 13px;
+}
+
   </style>
 </head>
 
@@ -181,6 +209,7 @@
   </div>
 
 </div>
+
 
 <p class="description">
   Select your favorite blouse design and send it directly to your tailor.
