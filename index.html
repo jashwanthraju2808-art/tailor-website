@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My Custom Tailor Shop</title>
+  <title>Vanitha Tailor Boutique</title>
 
   <style>
     body {
@@ -13,10 +13,7 @@
     }
 
     h1 {
-  background: linear-gradient(to right, #ff4081, #ff80ab);
-}
       color: white;
-      padding: 20px;
       margin: 0;
     }
 
@@ -25,6 +22,29 @@
       font-size: 16px;
     }
 
+    /* HEADER */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 15px;
+      background: linear-gradient(to right, #ff4081, #ff80ab);
+      color: white;
+      padding: 15px 20px;
+    }
+
+    .logo {
+      width: 90px;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .tagline {
+      margin: 0;
+      font-size: 13px;
+    }
+
+    /* BUTTONS */
     .buttons {
       margin: 20px;
     }
@@ -44,6 +64,7 @@
       background-color: #e73370;
     }
 
+    /* GALLERY */
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -92,6 +113,7 @@
       background: darkgreen;
     }
 
+    /* POPUP */
     #popup {
       display: none;
       position: fixed;
@@ -123,6 +145,7 @@
       font-size: 16px;
     }
 
+    /* FORM */
     #leadFormModal {
       display: none;
       position: fixed;
@@ -167,56 +190,92 @@
       border: none;
       cursor: pointer;
     }
-    .header {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 15px;
-  background: linear-gradient(to right, #ff4081, #ff80ab);
-  color: white;
-  padding: 15px 20px;
+    
+    /* REVIEWS */
+.reviews {
+  padding: 30px;
+  background: #fff0f5;
 }
 
-.logo {
-  width: 90px;
-  height: auto;
-  border-radius: 0;   /* remove circle */
+.reviews h2 {
+  margin-bottom: 20px;
 }
-
-.header h1 {
-  margin: 0;
-  font-size: 22px;
+    
+.location {
+  padding: 30px;
 }
-
-.tagline {
-  margin: 0;
-  font-size: 13px;
+.review-card {
+  background: white;
+  margin: 10px auto;
+  padding: 15px;
+  max-width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
+    <!-- LOCATION -->
+<div class="location">
+  <h2>📍 Visit Our Shop</h2>
 
+  <iframe
+    src="https://maps.google.com/maps?q=Tumkur&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    width="90%"
+    height="300"
+    style="border:0; border-radius:10px;"
+    allowfullscreen=""
+    loading="lazy">
+  </iframe>
+</div>
+    
   </style>
-</head>
+  </head>
 
 <body>
 
+<!-- HEADER -->
 <div class="header">
-
   <img src="logo.png" alt="Logo" class="logo">
-
   <div>
     <h1>Vanitha Tailor Boutique 👗</h1>
     <p class="tagline">Perfect Stitching | Latest Designs | Trusted Tailor</p>
   </div>
-
 </div>
 
-
+<!-- DESCRIPTION -->
 <p class="description">
   Select your favorite blouse design and send it directly to your tailor.
 </p>
 
+<!-- FILTER BUTTONS -->
+<div class="buttons">
+  <button onclick="filterDesign('all')">All</button>
+  <button onclick="filterDesign('bridal')">Bridal</button>
+  <button onclick="filterDesign('simple')">Simple</button>
+  <button onclick="filterDesign('party')">Party</button>
+</div>
+  
+<!-- REVIEWS SECTION -->
+<div class="reviews">
+  <h2>⭐ Customer Reviews</h2>
+
+  <div class="review-card">
+    <p>"Very neat stitching and perfect fitting. Highly recommended!"</p>
+    <h4>- Lakshmi</h4>
+  </div>
+
+  <div class="review-card">
+    <p>"Latest designs and affordable price. Loved the work!"</p>
+    <h4>- Kavya</h4>
+  </div>
+
+  <div class="review-card">
+    <p>"Delivered on time and quality is excellent."</p>
+    <h4>- Anitha</h4>
+  </div>
+</div>
+  
+<!-- GALLERY -->
 <div class="gallery">
 
-  <!-- Bridal -->
   <div class="card bridal">
     <img src="blouse2.jpeg" onclick="openImage(this.src)">
     <p>Bridal Design</p>
@@ -231,7 +290,6 @@
     <button class="send-to-tailor-btn" data-design-name="Bridal Design ₹550">Send to Tailor</button>
   </div>
 
-  <!-- Simple -->
   <div class="card simple">
     <img src="blouse3.jpeg" onclick="openImage(this.src)">
     <p>Simple Design</p>
@@ -246,7 +304,6 @@
     <button class="send-to-tailor-btn" data-design-name="Simple Design ₹550">Send to Tailor</button>
   </div>
 
-  <!-- Party -->
   <div class="card party">
     <img src="blouse4.jpeg" onclick="openImage(this.src)">
     <p>Party Wear</p>
@@ -261,7 +318,6 @@
     <button class="send-to-tailor-btn" data-design-name="Party Wear ₹800">Send to Tailor</button>
   </div>
 
-  <!-- NEW IMAGE ADDED CORRECTLY -->
   <div class="card party">
     <img src="blouse10.jpeg" onclick="openImage(this.src)">
     <p>Latest Design</p>
@@ -271,13 +327,13 @@
 
 </div>
 
-<!-- Popup -->
+<!-- POPUP -->
 <div id="popup">
   <button id="backBtn">← Back</button>
   <img id="popupImg">
 </div>
 
-<!-- Form -->
+<!-- FORM -->
 <div id="leadFormModal">
   <div class="modal-content">
     <span class="close">&times;</span>
