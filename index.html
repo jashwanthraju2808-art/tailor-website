@@ -31,7 +31,6 @@
     .description {
       margin: 15px;
       font-size: 16px;
-      color: #333;
     }
 
     /* BUTTONS */
@@ -77,7 +76,7 @@
       cursor: pointer;
     }
 
-    /* POPUP IMAGE */
+    /* IMAGE POPUP */
     #popup {
       display: none;
       position: fixed;
@@ -93,7 +92,6 @@
     #popup img {
       max-width: 90%;
       max-height: 90%;
-      border-radius: 10px;
     }
 
     #backBtn {
@@ -106,33 +104,39 @@
       padding: 10px;
     }
 
-    /* FORM POPUP FIX */
+    /* FORM MODAL (FINAL FIX) */
     #leadFormModal {
-  display: none;
-  position: fixed !important;   /* FORCE FIX */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
-  z-index: 99999;
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 99999;
 
-  /* CENTER FIX */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+      justify-content: center;
+      align-items: center;
+    }
 
-  visibility: hidden;
-  opacity: 0;
-  transition: 0.3s;
-}
+    #leadFormModal.active {
+      display: flex;
+    }
 
-#leadFormModal.active {
-  visibility: visible;
-  opacity: 1;
-}
-    
-    /* REVIEW SECTION */
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin: 5px 0;
+    }
+
+    /* REVIEW */
     .reviews {
       background: white;
       margin: 20px;
@@ -140,7 +144,7 @@
       border-radius: 10px;
     }
 
-    /* WHATSAPP FLOAT */
+    /* WHATSAPP */
     .whatsapp-float {
       position: fixed;
       bottom: 20px;
@@ -150,7 +154,6 @@
       padding: 15px;
       border-radius: 50%;
       text-decoration: none;
-      font-size: 20px;
     }
   </style>
 </head>
@@ -234,14 +237,14 @@
 
 </div>
 
-<!-- REVIEW SECTION -->
+<!-- REVIEW -->
 <div class="reviews">
   <h3>Customer Reviews ⭐</h3>
   <p>⭐️⭐️⭐️⭐️⭐️ Very good stitching!</p>
   <p>⭐️⭐️⭐️⭐️ Nice fitting and design</p>
 </div>
 
-<!-- WHATSAPP FLOAT -->
+<!-- WHATSAPP -->
 <a href="https://wa.me/919916486812" class="whatsapp-float">💬</a>
 
 <!-- IMAGE POPUP -->
@@ -250,7 +253,7 @@
   <img id="popupImg">
 </div>
 
-<!-- FORM POPUP -->
+<!-- FORM -->
 <div id="leadFormModal">
   <div class="modal-content">
     <span id="closeBtn">X</span>
@@ -258,7 +261,7 @@
       <input id="name" placeholder="Name" required>
       <input id="phone" placeholder="Phone" required>
       <input id="design" readonly>
-      <button>Send</button>
+      <button type="submit">Send</button>
     </form>
   </div>
 </div>
@@ -270,7 +273,6 @@ function openImage(src) {
   popup.style.display = "flex";
   popupImg.src = src;
 }
-
 popup.onclick = () => popup.style.display = "none";
 popupImg.onclick = e => e.stopPropagation();
 
@@ -282,33 +284,33 @@ function filterDesign(cat) {
 }
 filterDesign('all');
 
-// FORM FIX
+// FORM
 const modal = document.getElementById("leadFormModal");
 const designInput = document.getElementById("design");
 
 document.querySelectorAll(".send-btn").forEach(btn => {
-  btn.addEventListener("click", function (e) {
-    e.preventDefault(); // 🔥 VERY IMPORTANT FIX
-    designInput.value = this.dataset.design;
-
-    modal.classList.add("active"); // USE CLASS
-  });
+  btn.onclick = () => {
+    designInput.value = btn.dataset.design;
+    modal.classList.add("active");
+  };
 });
-
 
 document.getElementById("closeBtn").onclick = () => {
   modal.classList.remove("active");
 };
 
-
 document.getElementById("leadForm").onsubmit = function(e){
   e.preventDefault();
+
   let name = document.getElementById("name").value;
   let phone = document.getElementById("phone").value;
-  let design = designInput.value;
+  let design = document.getElementById("design").value;
 
   let msg = `Hi, I am ${name}. I selected ${design}. Phone: ${phone}`;
-  window.open(`https://wa.me/919916486812?text=${encodeURIComponent(msg)}`);
+
+  window.open(`https://wa.me/918217417571?text=${encodeURIComponent(msg)}`);
+
+  modal.classList.remove("active");
 };
 
 </script>
