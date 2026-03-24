@@ -108,32 +108,30 @@
 
     /* FORM POPUP FIX */
     #leadFormModal {
-      display: none;
-      position: fixed; /* FIXED HERE */
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.6);
-      justify-content: center;
-      align-items: center;
-      z-index: 10000;
-    }
+  display: none;
+  position: fixed !important;   /* FORCE FIX */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 99999;
 
-    .modal-content {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      width: 300px;
-      text-align: left;
-    }
+  /* CENTER FIX */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    input {
-      width: 100%;
-      padding: 8px;
-      margin: 5px 0;
-    }
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s;
+}
 
+#leadFormModal.active {
+  visibility: visible;
+  opacity: 1;
+}
+    
     /* REVIEW SECTION */
     .reviews {
       background: white;
@@ -183,55 +181,55 @@
   <div class="card simple">
     <img src="blouse3.jpeg" onclick="openImage(this.src)">
     <p>Simple ₹500</p>
-    <button class="send-btn" data-design="Simple ₹500">Send</button>
+    <button type="button" class="send-btn" data-design="Simple ₹500">Send</button>
   </div>
 
   <div class="card bridal">
     <img src="blouse2.jpeg" onclick="openImage(this.src)">
     <p>Bridal ₹600</p>
-    <button class="send-btn" data-design="Bridal ₹600">Send</button>
+    <button type="button" class="send-btn" data-design="Bridal ₹600">Send</button>
   </div>
 
   <div class="card party">
     <img src="blouse4.jpeg" onclick="openImage(this.src)">
     <p>Party ₹600</p>
-    <button class="send-btn" data-design="Party ₹600">Send</button>
+    <button type="button" class="send-btn" data-design="Party ₹600">Send</button>
   </div>
 
   <div class="card simple">
     <img src="blouse5.jpeg" onclick="openImage(this.src)">
     <p>Simple ₹600</p>
-    <button class="send-btn" data-design="Simple ₹600">Send</button>
+    <button type="button" class="send-btn" data-design="Simple ₹600">Send</button>
   </div>
 
   <div class="card simple">
     <img src="blouse6.jpeg" onclick="openImage(this.src)">
     <p>Simple ₹600</p>
-    <button class="send-btn" data-design="Simple ₹600">Send</button>
+    <button type="button" class="send-btn" data-design="Simple ₹600">Send</button>
   </div>
 
   <div class="card simple">
     <img src="blouse7.jpeg" onclick="openImage(this.src)">
     <p>Simple ₹650</p>
-    <button class="send-btn" data-design="Simple ₹650">Send</button>
+    <button type="button" class="send-btn" data-design="Simple ₹650">Send</button>
   </div>
 
   <div class="card party">
     <img src="blouse8.jpeg" onclick="openImage(this.src)">
     <p>Party ₹800</p>
-    <button class="send-btn" data-design="Party ₹800">Send</button>
+    <button type="button" class="send-btn" data-design="Party ₹800">Send</button>
   </div>
 
   <div class="card simple">
     <img src="blouse9.jpeg" onclick="openImage(this.src)">
     <p>Simple ₹650</p>
-    <button class="send-btn" data-design="Simple ₹650">Send</button>
+    <button type="button" class="send-btn" data-design="Simple ₹650">Send</button>
   </div>
 
   <div class="card party">
     <img src="blouse10.jpeg" onclick="openImage(this.src)">
     <p>Party ₹650</p>
-    <button class="send-btn" data-design="Party ₹650">Send</button>
+    <button type="button" class="send-btn" data-design="Party ₹650">Send</button>
   </div>
 
 </div>
@@ -289,13 +287,19 @@ const modal = document.getElementById("leadFormModal");
 const designInput = document.getElementById("design");
 
 document.querySelectorAll(".send-btn").forEach(btn => {
-  btn.onclick = () => {
-    designInput.value = btn.dataset.design;
-    modal.style.display = "flex"; // FIXED POPUP
-  };
+  btn.addEventListener("click", function (e) {
+    e.preventDefault(); // 🔥 VERY IMPORTANT FIX
+    designInput.value = this.dataset.design;
+
+    modal.classList.add("active"); // USE CLASS
+  });
 });
 
-document.getElementById("closeBtn").onclick = () => modal.style.display = "none";
+
+document.getElementById("closeBtn").onclick = () => {
+  modal.classList.remove("active");
+};
+
 
 document.getElementById("leadForm").onsubmit = function(e){
   e.preventDefault();
