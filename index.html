@@ -6,14 +6,12 @@
   <style>
     body {
       font-family: Arial;
+      margin: 0;
       text-align: center;
       background: #ffe6f0;
-      margin: auto;
-      max-width: 1200px;
     }
 
-    h1 { color: white; margin: 0; }
-
+    /* HEADER */
     .header {
       display: flex;
       align-items: center;
@@ -23,25 +21,37 @@
       padding: 15px 20px;
     }
 
-    .logo { width: 70px; border-radius: 10px; }
+    .logo {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+    }
 
-    .buttons { margin: 20px; }
+    h1 {
+      margin: 0;
+    }
+
+    /* BUTTONS */
+    .buttons {
+      margin: 20px;
+    }
 
     .buttons button {
-      padding: 10px 20px;
+      padding: 10px 15px;
       margin: 5px;
-      border: none;
-      border-radius: 6px;
       background: #ff4081;
       color: white;
+      border: none;
+      border-radius: 5px;
       cursor: pointer;
     }
 
+    /* GALLERY */
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 20px;
-      padding: 30px;
+      padding: 20px;
     }
 
     .card {
@@ -52,7 +62,7 @@
 
     .card img {
       width: 100%;
-      height: 160px;
+      height: 180px;
       object-fit: cover;
       border-radius: 10px;
       cursor: pointer;
@@ -68,17 +78,25 @@
       cursor: pointer;
     }
 
+    /* POPUP */
     #popup {
       display: none;
       position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       background: rgba(0,0,0,0.8);
       justify-content: center;
       align-items: center;
+      z-index: 9999;
     }
 
-    #popup img { max-width: 90%; }
+    #popup img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+    }
 
     #backBtn {
       position: absolute;
@@ -87,9 +105,11 @@
       background: #ff4081;
       color: white;
       border: none;
-      padding: 8px;
+      padding: 10px;
+      cursor: pointer;
     }
 
+    /* FORM */
     #leadFormModal {
       display: none;
       position: fixed;
@@ -113,16 +133,7 @@
       margin: 5px 0;
     }
 
-    .reviews { padding: 30px; background: #fff0f5; }
-
-    .review-card {
-      background: white;
-      margin: 10px auto;
-      padding: 15px;
-      max-width: 400px;
-      border-radius: 10px;
-    }
-
+    /* WHATSAPP FLOAT */
     .whatsapp-float {
       position: fixed;
       bottom: 20px;
@@ -132,19 +143,20 @@
       padding: 15px;
       border-radius: 50%;
       text-decoration: none;
+      font-size: 20px;
     }
   </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <div class="header">
   <img src="logo.png" class="logo">
   <h1>Vanitha Tailor Boutique 👗</h1>
 </div>
 
-<p>Select your favorite blouse design and send it directly.</p>
-
+<!-- FILTER BUTTONS -->
 <div class="buttons">
   <button onclick="filterDesign('all')">All</button>
   <button onclick="filterDesign('bridal')">Bridal</button>
@@ -152,72 +164,78 @@
   <button onclick="filterDesign('party')">Party</button>
 </div>
 
+<!-- GALLERY -->
 <div class="gallery">
 
   <div class="card bridal">
     <img src="blouse2.jpeg" onclick="openImage(this.src)">
     <p>Bridal ₹600</p>
-    <button class="send-to-tailor-btn" data-design="Bridal ₹600">Send</button>
+    <button class="send-btn" data-design="Bridal ₹600">Send</button>
   </div>
 
   <div class="card simple">
     <img src="blouse3.jpeg" onclick="openImage(this.src)">
     <p>Simple ₹500</p>
-    <button class="send-to-tailor-btn" data-design="Simple ₹500">Send</button>
+    <button class="send-btn" data-design="Simple ₹500">Send</button>
   </div>
 
   <div class="card party">
     <img src="blouse4.jpeg" onclick="openImage(this.src)">
     <p>Party ₹600</p>
-    <button class="send-to-tailor-btn" data-design="Party ₹600">Send</button>
+    <button class="send-btn" data-design="Party ₹600">Send</button>
   </div>
-  <div class="card party">
+
+  <div class="card simple">
     <img src="blouse5.jpeg" onclick="openImage(this.src)">
-    <p>Bridal ₹550</p>
-    <button class="send-to-tailor-btn" data-design="Party ₹550">Send</button>
+    <p>Simple ₹600</p>
+    <button class="send-btn" data-design="Simple ₹600">Send</button>
   </div>
-   <div class="card party">
+
+  <div class="card simple">
     <img src="blouse6.jpeg" onclick="openImage(this.src)">
-    <p>Bridal ₹550</p>
-    <button class="send-to-tailor-btn" data-design="Party ₹550">Send</button>
+    <p>Simple ₹600</p>
+    <button class="send-btn" data-design="Simple ₹600">Send</button>
   </div>
- <div class="card party">
+
+  <div class="card simple">
     <img src="blouse7.jpeg" onclick="openImage(this.src)">
-    <p>Party ₹650</p>
-    <button class="send-to-tailor-btn" data-design="Party ₹650">Send</button>
+    <p>Simple ₹650</p>
+    <button class="send-btn" data-design="Simple ₹650">Send</button>
   </div>
+
   <div class="card party">
     <img src="blouse8.jpeg" onclick="openImage(this.src)">
-    <p>Party ₹650</p>
-    <button class="send-to-tailor-btn" data-design="Party ₹650">Send</button>
+    <p>Party ₹800</p>
+    <button class="send-btn" data-design="Party ₹800">Send</button>
   </div>
-  <div class="card party">
+
+  <div class="card simple">
     <img src="blouse9.jpeg" onclick="openImage(this.src)">
-    <p>Bridal ₹650</p>
-    <button class="send-to-tailor-btn" data-design="Bridal ₹650">Send</button>
+    <p>Simple ₹650</p>
+    <button class="send-btn" data-design="Simple ₹650">Send</button>
   </div>
+
   <div class="card party">
     <img src="blouse10.jpeg" onclick="openImage(this.src)">
     <p>Party ₹650</p>
-    <button class="send-to-tailor-btn" data-design="Party ₹650">Send</button>
+    <button class="send-btn" data-design="Party ₹650">Send</button>
   </div>
+
 </div>
 
-<div class="reviews">
-  <h2>⭐ Reviews</h2>
-  <div class="review-card">Perfect stitching!</div>
-</div>
-
+<!-- WHATSAPP FLOAT -->
 <a href="https://wa.me/919916486812" class="whatsapp-float">💬</a>
 
+<!-- POPUP -->
 <div id="popup">
   <button id="backBtn">← Back</button>
   <img id="popupImg">
 </div>
 
+<!-- FORM -->
 <div id="leadFormModal">
   <div class="modal-content">
-    <span class="close">X</span>
+    <span id="closeBtn">X</span>
     <form id="leadForm">
       <input id="name" placeholder="Name" required>
       <input id="phone" placeholder="Phone" required>
@@ -228,70 +246,73 @@
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
 
-  const popup = document.getElementById("popup");
-  const popupImg = document.getElementById("popupImg");
-  const backBtn = document.getElementById("backBtn");
+const popup = document.getElementById("popup");
+const popupImg = document.getElementById("popupImg");
 
-  const modal = document.getElementById("leadFormModal");
-  const designInput = document.getElementById("design");
-
-   function openImage(src) {
-  document.getElementById("popup").style.display = "flex";
-  document.getElementById("popupImg").src = src;
-
-  document.body.style.overflow = "hidden"; // 🔥 stop scroll
+function openImage(src) {
+  popup.style.display = "flex";
+  popupImg.src = src;
+  document.body.style.overflow = "hidden";
 }
 
-document.getElementById("backBtn").onclick = function () {
-  document.getElementById("popup").style.display = "none";
-
-  document.body.style.overflow = "auto"; // 🔥 restore scroll
-};
-  document.getElementById("popup").onclick = function () {
-  this.style.display = "none";
+// CLOSE POPUP
+popup.onclick = function () {
+  popup.style.display = "none";
   document.body.style.overflow = "auto";
 };
 
-  // IMAGE
-  window.openImage = function(src) {
-    popup.style.display = "flex";
-    popupImg.src = src;
-  }
+// PREVENT CLOSE WHEN CLICK IMAGE
+popupImg.onclick = function(e){
+  e.stopPropagation();
+};
 
-  backBtn.onclick = () => popup.style.display = "none";
+document.getElementById("backBtn").onclick = function(e){
+  e.stopPropagation();
+  popup.style.display = "none";
+  document.body.style.overflow = "auto";
+};
 
-  // FILTER
-  window.filterDesign = function(cat) {
-    document.querySelectorAll(".card").forEach(card => {
-      card.style.display =
-        (cat === "all" || card.classList.contains(cat)) ? "block" : "none";
-    });
-  }
-
-  // BUTTON CLICK
-  document.querySelectorAll(".send-to-tailor-btn").forEach(btn => {
-    btn.onclick = () => {
-      designInput.value = btn.dataset.design;
-      modal.style.display = "flex";
-    };
+// FILTER
+function filterDesign(cat) {
+  document.querySelectorAll(".card").forEach(card => {
+    card.style.display =
+      (cat === "all" || card.classList.contains(cat)) ? "block" : "none";
   });
+}
 
-  document.querySelector(".close").onclick = () => modal.style.display = "none";
+// DEFAULT SHOW ALL
+filterDesign('all');
 
-  // FORM
-  document.getElementById("leadForm").onsubmit = function(e) {
-    e.preventDefault();
-    let name = document.getElementById("name").value;
-    let phone = document.getElementById("phone").value;
-    let design = designInput.value;
+// SEND BUTTON
+const modal = document.getElementById("leadFormModal");
+const designInput = document.getElementById("design");
 
-    let msg = `Hi, I am ${name}. I selected ${design}. Phone: ${phone}`;
-    window.open(`https://wa.me/918217417571?text=${encodeURIComponent(msg)}`);
-  }
-
+document.querySelectorAll(".send-btn").forEach(btn => {
+  btn.onclick = () => {
+    designInput.value = btn.dataset.design;
+    modal.style.display = "flex";
+  };
 });
+
+// CLOSE FORM
+document.getElementById("closeBtn").onclick = () => {
+  modal.style.display = "none";
+};
+
+// SUBMIT
+document.getElementById("leadForm").onsubmit = function(e){
+  e.preventDefault();
+
+  let name = document.getElementById("name").value;
+  let phone = document.getElementById("phone").value;
+  let design = designInput.value;
+
+  let msg = `Hi, I am ${name}. I selected ${design}. Phone: ${phone}`;
+
+  window.open(`https://wa.me/919916486812?text=${encodeURIComponent(msg)}`);
+};
+
 </script>
 
 </body>
