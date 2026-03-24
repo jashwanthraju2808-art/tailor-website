@@ -12,17 +12,8 @@
       max-width: 1200px;
     }
 
-    h1 {
-      color: white;
-      margin: 0;
-    }
+    h1 { color: white; margin: 0; }
 
-    .description {
-      padding: 15px;
-      font-size: 16px;
-    }
-
-    /* HEADER */
     .header {
       display: flex;
       align-items: center;
@@ -32,37 +23,20 @@
       padding: 15px 20px;
     }
 
-    .logo {
-      width: 70px;
-      height: auto;
-      border-radius: 10px;
-    }
+    .logo { width: 70px; border-radius: 10px; }
 
-    .tagline {
-      margin: 0;
-      font-size: 13px;
-    }
-
-    /* BUTTONS */
-    .buttons {
-      margin: 20px;
-    }
+    .buttons { margin: 20px; }
 
     .buttons button {
       padding: 10px 20px;
       margin: 5px;
       border: none;
       border-radius: 6px;
-      background-color: #ff4081;
+      background: #ff4081;
       color: white;
       cursor: pointer;
     }
 
-    .buttons button:hover {
-      background-color: #e73370;
-    }
-
-    /* GALLERY */
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -74,7 +48,6 @@
       background: white;
       padding: 10px;
       border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
     .card img {
@@ -83,11 +56,6 @@
       object-fit: cover;
       border-radius: 10px;
       cursor: pointer;
-    }
-
-    .price {
-      color: green;
-      font-weight: bold;
     }
 
     .card button {
@@ -100,7 +68,6 @@
       cursor: pointer;
     }
 
-    /* POPUP */
     #popup {
       display: none;
       position: fixed;
@@ -111,10 +78,7 @@
       align-items: center;
     }
 
-    #popup img {
-      max-width: 90%;
-      max-height: 90%;
-    }
+    #popup img { max-width: 90%; }
 
     #backBtn {
       position: absolute;
@@ -124,10 +88,8 @@
       color: white;
       border: none;
       padding: 8px;
-      border-radius: 5px;
     }
 
-    /* FORM */
     #leadFormModal {
       display: none;
       position: fixed;
@@ -145,17 +107,13 @@
       width: 300px;
     }
 
-    input, textarea {
+    input {
       width: 100%;
       padding: 8px;
       margin: 5px 0;
     }
 
-    /* REVIEWS */
-    .reviews {
-      padding: 30px;
-      background: #fff0f5;
-    }
+    .reviews { padding: 30px; background: #fff0f5; }
 
     .review-card {
       background: white;
@@ -165,44 +123,28 @@
       border-radius: 10px;
     }
 
-    /* LOCATION */
-    .location {
-      padding: 30px;
-    }
-
-    /* FLOATING WHATSAPP */
     .whatsapp-float {
       position: fixed;
       bottom: 20px;
       right: 20px;
       background: #25D366;
       color: white;
-      font-size: 20px;
       padding: 15px;
       border-radius: 50%;
       text-decoration: none;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
-
   </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <div class="header">
   <img src="logo.png" class="logo">
-  <div>
-    <h1>Vanitha Tailor Boutique 👗</h1>
-    <p class="tagline">Perfect Stitching | Latest Designs</p>
-  </div>
+  <h1>Vanitha Tailor Boutique 👗</h1>
 </div>
 
-<p class="description">
-  Select your favorite blouse design and send it directly to your tailor.
-</p>
+<p>Select your favorite blouse design and send it directly.</p>
 
-<!-- FILTER -->
 <div class="buttons">
   <button onclick="filterDesign('all')">All</button>
   <button onclick="filterDesign('bridal')">Bridal</button>
@@ -210,124 +152,129 @@
   <button onclick="filterDesign('party')">Party</button>
 </div>
 
-<!-- GALLERY -->
 <div class="gallery">
 
   <div class="card bridal">
     <img src="blouse2.jpeg" onclick="openImage(this.src)">
     <p>Bridal ₹600</p>
-    <button class="send-to-tailor-btn" data-design-name="Bridal ₹600">Send</button>
+    <button class="send-to-tailor-btn" data-design="Bridal ₹600">Send</button>
   </div>
 
   <div class="card simple">
     <img src="blouse3.jpeg" onclick="openImage(this.src)">
     <p>Simple ₹500</p>
-    <button class="send-to-tailor-btn" data-design-name="Simple ₹500">Send</button>
+    <button class="send-to-tailor-btn" data-design="Simple ₹500">Send</button>
   </div>
 
   <div class="card party">
     <img src="blouse4.jpeg" onclick="openImage(this.src)">
     <p>Party ₹600</p>
-    <button class="send-to-tailor-btn" data-design-name="Party ₹600">Send</button>
+    <button class="send-to-tailor-btn" data-design="Party ₹600">Send</button>
   </div>
-  
   <div class="card party">
     <img src="blouse5.jpeg" onclick="openImage(this.src)">
-    <p>Simple ₹600</p>
-    <button class="send-to-tailor-btn" data-design-name="Party ₹600">Send</button>
+    <p>Bridal ₹550</p>
+    <button class="send-to-tailor-btn" data-design="Party ₹550">Send</button>
   </div>
-  <div class="card party">
+   <div class="card party">
     <img src="blouse6.jpeg" onclick="openImage(this.src)">
-    <p>Simple ₹600</p>
-    <button class="send-to-tailor-btn" data-design-name="Party ₹600">Send</button>
+    <p>Bridal ₹550</p>
+    <button class="send-to-tailor-btn" data-design="Party ₹550">Send</button>
   </div>
-    <div class="card party">
+ <div class="card party">
     <img src="blouse7.jpeg" onclick="openImage(this.src)">
-    <p>Simple ₹650</p>
-    <button class="send-to-tailor-btn" data-design-name="Party ₹600">Send</button>
+    <p>Party ₹650</p>
+    <button class="send-to-tailor-btn" data-design="Party ₹650">Send</button>
   </div>
   <div class="card party">
     <img src="blouse8.jpeg" onclick="openImage(this.src)">
-    <p>Party ₹800</p>
-    <button class="send-to-tailor-btn" data-design-name="Party ₹600">Send</button>
+    <p>Party ₹650</p>
+    <button class="send-to-tailor-btn" data-design="Party ₹650">Send</button>
   </div>
   <div class="card party">
     <img src="blouse9.jpeg" onclick="openImage(this.src)">
-    <p>Simple ₹650</p>
-    <button class="send-to-tailor-btn" data-design-name="Party ₹600">Send</button>
+    <p>Bridal ₹650</p>
+    <button class="send-to-tailor-btn" data-design="Bridal ₹650">Send</button>
   </div>
-   <div class="card party">
+  <div class="card party">
     <img src="blouse10.jpeg" onclick="openImage(this.src)">
     <p>Party ₹650</p>
-    <button class="send-to-tailor-btn" data-design-name="Party ₹600">Send</button>
+    <button class="send-to-tailor-btn" data-design="Party ₹650">Send</button>
   </div>
 </div>
 
-<!-- REVIEWS -->
 <div class="reviews">
-  <h2>⭐ Customer Reviews</h2>
-  <div class="review-card">"Perfect stitching!" - Lakshmi</div>
-  <div class="review-card">"Very affordable!" - Kavya</div>
+  <h2>⭐ Reviews</h2>
+  <div class="review-card">Perfect stitching!</div>
 </div>
 
-<!-- LOCATION -->
-<div class="location">
-  <h2>📍 Visit Our Shop</h2>
-  <iframe src="https://maps.google.com/maps?q=Tumkur&output=embed"
-    width="90%" height="300"></iframe>
-</div>
-
-<!-- WHATSAPP FLOAT -->
 <a href="https://wa.me/919916486812" class="whatsapp-float">💬</a>
 
-<!-- POPUP -->
 <div id="popup">
   <button id="backBtn">← Back</button>
   <img id="popupImg">
 </div>
 
-<!-- FORM -->
 <div id="leadFormModal">
   <div class="modal-content">
-    <span class="close">&times;</span>
+    <span class="close">X</span>
     <form id="leadForm">
       <input id="name" placeholder="Name" required>
       <input id="phone" placeholder="Phone" required>
       <input id="design" readonly>
-      <button>Send to WhatsApp</button>
+      <button>Send</button>
     </form>
   </div>
 </div>
 
 <script>
-function openImage(src) {
-  popup.style.display = "flex";
-  popupImg.src = src;
-}
+document.addEventListener("DOMContentLoaded", function () {
 
-backBtn.onclick = () => popup.style.display = "none";
+  const popup = document.getElementById("popup");
+  const popupImg = document.getElementById("popupImg");
+  const backBtn = document.getElementById("backBtn");
 
-function filterDesign(cat) {
-  let cards = document.querySelectorAll(".card");
-  cards.forEach(c => {
-    c.style.display = (cat === "all" || c.classList.contains(cat)) ? "block" : "none";
+  const modal = document.getElementById("leadFormModal");
+  const designInput = document.getElementById("design");
+
+  // IMAGE
+  window.openImage = function(src) {
+    popup.style.display = "flex";
+    popupImg.src = src;
+  }
+
+  backBtn.onclick = () => popup.style.display = "none";
+
+  // FILTER
+  window.filterDesign = function(cat) {
+    document.querySelectorAll(".card").forEach(card => {
+      card.style.display =
+        (cat === "all" || card.classList.contains(cat)) ? "block" : "none";
+    });
+  }
+
+  // BUTTON CLICK
+  document.querySelectorAll(".send-to-tailor-btn").forEach(btn => {
+    btn.onclick = () => {
+      designInput.value = btn.dataset.design;
+      modal.style.display = "flex";
+    };
   });
-}
 
-document.querySelectorAll(".send-to-tailor-btn").forEach(btn => {
-  btn.onclick = () => {
-    design.value = btn.dataset.designName;
-    leadFormModal.style.display = "flex";
-  };
+  document.querySelector(".close").onclick = () => modal.style.display = "none";
+
+  // FORM
+  document.getElementById("leadForm").onsubmit = function(e) {
+    e.preventDefault();
+    let name = document.getElementById("name").value;
+    let phone = document.getElementById("phone").value;
+    let design = designInput.value;
+
+    let msg = `Hi, I am ${name}. I selected ${design}. Phone: ${phone}`;
+    window.open(`https://wa.me/918217417571?text=${encodeURIComponent(msg)}`);
+  }
+
 });
-
-document.querySelector(".close").onclick = () => leadFormModal.style.display = "none";
-
-leadForm.onsubmit = e => {
-  e.preventDefault();
-  let msg = `Hi I selected ${design.value}`;
-  window.open(`https://wa.me/919916486812?text=${encodeURIComponent(msg)}`);
-};
 </script>
 
 </body>
