@@ -27,15 +27,14 @@
       border-radius: 50%;
     }
 
-    h1 {
-      margin: 0;
+    /* DESCRIPTION */
+    .description {
+      margin: 15px;
+      font-size: 16px;
+      color: #333;
     }
 
     /* BUTTONS */
-    .buttons {
-      margin: 20px;
-    }
-
     .buttons button {
       padding: 10px 15px;
       margin: 5px;
@@ -78,12 +77,11 @@
       cursor: pointer;
     }
 
-    /* POPUP */
+    /* POPUP IMAGE */
     #popup {
       display: none;
       position: fixed;
       top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
       background: rgba(0,0,0,0.8);
@@ -106,18 +104,20 @@
       color: white;
       border: none;
       padding: 10px;
-      cursor: pointer;
     }
 
-    /* FORM */
+    /* FORM POPUP FIX */
     #leadFormModal {
       display: none;
-      position: fixed;
+      position: fixed; /* FIXED HERE */
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.5);
+      background: rgba(0,0,0,0.6);
       justify-content: center;
       align-items: center;
+      z-index: 10000;
     }
 
     .modal-content {
@@ -125,12 +125,21 @@
       padding: 20px;
       border-radius: 10px;
       width: 300px;
+      text-align: left;
     }
 
     input {
       width: 100%;
       padding: 8px;
       margin: 5px 0;
+    }
+
+    /* REVIEW SECTION */
+    .reviews {
+      background: white;
+      margin: 20px;
+      padding: 20px;
+      border-radius: 10px;
     }
 
     /* WHATSAPP FLOAT */
@@ -153,10 +162,14 @@
 <!-- HEADER -->
 <div class="header">
   <img src="logo.png" class="logo">
-  <h1>Vanitha Tailor Boutique 👗</h1>
+  <h2>Vanitha Tailor Boutique 👗</h2>
 </div>
 
-<!-- FILTER BUTTONS -->
+<p class="description">
+  Select your favorite blouse design and send it directly to your tailor.
+</p>
+
+<!-- FILTER -->
 <div class="buttons">
   <button onclick="filterDesign('all')">All</button>
   <button onclick="filterDesign('bridal')">Bridal</button>
@@ -167,16 +180,16 @@
 <!-- GALLERY -->
 <div class="gallery">
 
-  <div class="card bridal">
-    <img src="blouse2.jpeg" onclick="openImage(this.src)">
-    <p>Bridal ₹600</p>
-    <button class="send-btn" data-design="Bridal ₹600">Send</button>
-  </div>
-
   <div class="card simple">
     <img src="blouse3.jpeg" onclick="openImage(this.src)">
     <p>Simple ₹500</p>
     <button class="send-btn" data-design="Simple ₹500">Send</button>
+  </div>
+
+  <div class="card bridal">
+    <img src="blouse2.jpeg" onclick="openImage(this.src)">
+    <p>Bridal ₹600</p>
+    <button class="send-btn" data-design="Bridal ₹600">Send</button>
   </div>
 
   <div class="card party">
@@ -223,16 +236,23 @@
 
 </div>
 
+<!-- REVIEW SECTION -->
+<div class="reviews">
+  <h3>Customer Reviews ⭐</h3>
+  <p>⭐️⭐️⭐️⭐️⭐️ Very good stitching!</p>
+  <p>⭐️⭐️⭐️⭐️ Nice fitting and design</p>
+</div>
+
 <!-- WHATSAPP FLOAT -->
 <a href="https://wa.me/919916486812" class="whatsapp-float">💬</a>
 
-<!-- POPUP -->
+<!-- IMAGE POPUP -->
 <div id="popup">
   <button id="backBtn">← Back</button>
   <img id="popupImg">
 </div>
 
-<!-- FORM -->
+<!-- FORM POPUP -->
 <div id="leadFormModal">
   <div class="modal-content">
     <span id="closeBtn">X</span>
@@ -247,69 +267,43 @@
 
 <script>
 
-const popup = document.getElementById("popup");
-const popupImg = document.getElementById("popupImg");
-
+// IMAGE POPUP
 function openImage(src) {
   popup.style.display = "flex";
   popupImg.src = src;
-  document.body.style.overflow = "hidden";
 }
 
-// CLOSE POPUP
-popup.onclick = function () {
-  popup.style.display = "none";
-  document.body.style.overflow = "auto";
-};
-
-// PREVENT CLOSE WHEN CLICK IMAGE
-popupImg.onclick = function(e){
-  e.stopPropagation();
-};
-
-document.getElementById("backBtn").onclick = function(e){
-  e.stopPropagation();
-  popup.style.display = "none";
-  document.body.style.overflow = "auto";
-};
+popup.onclick = () => popup.style.display = "none";
+popupImg.onclick = e => e.stopPropagation();
 
 // FILTER
 function filterDesign(cat) {
-  document.querySelectorAll(".card").forEach(card => {
-    card.style.display =
-      (cat === "all" || card.classList.contains(cat)) ? "block" : "none";
+  document.querySelectorAll(".card").forEach(c => {
+    c.style.display = (cat === "all" || c.classList.contains(cat)) ? "block" : "none";
   });
 }
-
-// DEFAULT SHOW ALL
 filterDesign('all');
 
-// SEND BUTTON
+// FORM FIX
 const modal = document.getElementById("leadFormModal");
 const designInput = document.getElementById("design");
 
 document.querySelectorAll(".send-btn").forEach(btn => {
   btn.onclick = () => {
     designInput.value = btn.dataset.design;
-    modal.style.display = "flex";
+    modal.style.display = "flex"; // FIXED POPUP
   };
 });
 
-// CLOSE FORM
-document.getElementById("closeBtn").onclick = () => {
-  modal.style.display = "none";
-};
+document.getElementById("closeBtn").onclick = () => modal.style.display = "none";
 
-// SUBMIT
 document.getElementById("leadForm").onsubmit = function(e){
   e.preventDefault();
-
   let name = document.getElementById("name").value;
   let phone = document.getElementById("phone").value;
   let design = designInput.value;
 
   let msg = `Hi, I am ${name}. I selected ${design}. Phone: ${phone}`;
-
   window.open(`https://wa.me/919916486812?text=${encodeURIComponent(msg)}`);
 };
 
