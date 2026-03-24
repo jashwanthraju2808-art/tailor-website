@@ -17,7 +17,7 @@
       margin: 0;
     }
 
-    p.description {
+    .description {
       padding: 15px;
       font-size: 16px;
     }
@@ -26,7 +26,6 @@
     .header {
       display: flex;
       align-items: center;
-      justify-content: flex-start;
       gap: 15px;
       background: linear-gradient(to right, #ff4081, #ff80ab);
       color: white;
@@ -34,7 +33,7 @@
     }
 
     .logo {
-      width: 90px;
+      width: 70px;
       height: auto;
       border-radius: 10px;
     }
@@ -52,7 +51,6 @@
     .buttons button {
       padding: 10px 20px;
       margin: 5px;
-      font-size: 16px;
       border: none;
       border-radius: 6px;
       background-color: #ff4081;
@@ -76,13 +74,7 @@
       background: white;
       padding: 10px;
       border-radius: 10px;
-      text-align: center;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      transition: transform 0.2s;
-    }
-
-    .card:hover {
-      transform: scale(1.05);
     }
 
     .card img {
@@ -96,12 +88,11 @@
     .price {
       color: green;
       font-weight: bold;
-      margin-top: 5px;
     }
 
     .card button {
       margin-top: 8px;
-      padding: 8px 12px;
+      padding: 8px;
       background: green;
       color: white;
       border: none;
@@ -109,16 +100,10 @@
       cursor: pointer;
     }
 
-    .card button:hover {
-      background: darkgreen;
-    }
-
     /* POPUP */
     #popup {
       display: none;
       position: fixed;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
       background: rgba(0,0,0,0.8);
@@ -129,203 +114,141 @@
     #popup img {
       max-width: 90%;
       max-height: 90%;
-      border-radius: 10px;
     }
 
     #backBtn {
       position: absolute;
       top: 20px;
       left: 20px;
-      background-color: #ff4081;
+      background: #ff4081;
       color: white;
       border: none;
-      padding: 8px 12px;
+      padding: 8px;
       border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
     }
 
     /* FORM */
     #leadFormModal {
       display: none;
       position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0,0,0,0.5);
+      background: rgba(0,0,0,0.5);
       justify-content: center;
       align-items: center;
     }
 
     .modal-content {
-      background-color: #fff;
+      background: white;
       padding: 20px;
       border-radius: 10px;
-      width: 90%;
-      max-width: 400px;
-      text-align: center;
-    }
-
-    .close {
-      float: right;
-      font-size: 24px;
-      cursor: pointer;
+      width: 300px;
     }
 
     input, textarea {
       width: 100%;
       padding: 8px;
-      margin: 5px 0 15px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
+      margin: 5px 0;
     }
 
-    #leadFormModal button {
-      background-color: #25D366;
-      color: white;
-      padding: 10px;
-      border-radius: 5px;
-      border: none;
-      cursor: pointer;
-    }
-    
     /* REVIEWS */
-.reviews {
-  padding: 30px;
-  background: #fff0f5;
-}
+    .reviews {
+      padding: 30px;
+      background: #fff0f5;
+    }
 
-.reviews h2 {
-  margin-bottom: 20px;
-}
-    
-.location {
-  padding: 30px;
-}
-.review-card {
-  background: white;
-  margin: 10px auto;
-  padding: 15px;
-  max-width: 400px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-    <!-- LOCATION -->
-<div class="location">
-  <h2>📍 Visit Our Shop</h2>
+    .review-card {
+      background: white;
+      margin: 10px auto;
+      padding: 15px;
+      max-width: 400px;
+      border-radius: 10px;
+    }
 
-  <iframe
-    src="https://maps.google.com/maps?q=Tumkur&t=&z=13&ie=UTF8&iwloc=&output=embed"
-    width="90%"
-    height="300"
-    style="border:0; border-radius:10px;"
-    allowfullscreen=""
-    loading="lazy">
-  </iframe>
-</div>
-    
+    /* LOCATION */
+    .location {
+      padding: 30px;
+    }
+
+    /* FLOATING WHATSAPP */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: white;
+      font-size: 20px;
+      padding: 15px;
+      border-radius: 50%;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
   </style>
-  </head>
+</head>
 
 <body>
 
 <!-- HEADER -->
 <div class="header">
-  <img src="logo.png" alt="Logo" class="logo">
+  <img src="logo.png" class="logo">
   <div>
     <h1>Vanitha Tailor Boutique 👗</h1>
-    <p class="tagline">Perfect Stitching | Latest Designs | Trusted Tailor</p>
+    <p class="tagline">Perfect Stitching | Latest Designs</p>
   </div>
 </div>
 
-<!-- DESCRIPTION -->
 <p class="description">
   Select your favorite blouse design and send it directly to your tailor.
 </p>
 
-<!-- FILTER BUTTONS -->
+<!-- FILTER -->
 <div class="buttons">
   <button onclick="filterDesign('all')">All</button>
   <button onclick="filterDesign('bridal')">Bridal</button>
   <button onclick="filterDesign('simple')">Simple</button>
   <button onclick="filterDesign('party')">Party</button>
 </div>
-  
-<!-- REVIEWS SECTION -->
-<div class="reviews">
-  <h2>⭐ Customer Reviews</h2>
 
-  <div class="review-card">
-    <p>"Very neat stitching and perfect fitting. Highly recommended!"</p>
-    <h4>- Lakshmi</h4>
-  </div>
-
-  <div class="review-card">
-    <p>"Latest designs and affordable price. Loved the work!"</p>
-    <h4>- Kavya</h4>
-  </div>
-
-  <div class="review-card">
-    <p>"Delivered on time and quality is excellent."</p>
-    <h4>- Anitha</h4>
-  </div>
-</div>
-  
 <!-- GALLERY -->
 <div class="gallery">
 
   <div class="card bridal">
     <img src="blouse2.jpeg" onclick="openImage(this.src)">
-    <p>Bridal Design</p>
-    <p class="price">₹600</p>
-    <button class="send-to-tailor-btn" data-design-name="Bridal Design ₹600">Send to Tailor</button>
-  </div>
-
-  <div class="card bridal">
-    <img src="blouse5.jpeg" onclick="openImage(this.src)">
-    <p>Bridal Design</p>
-    <p class="price">₹550</p>
-    <button class="send-to-tailor-btn" data-design-name="Bridal Design ₹550">Send to Tailor</button>
+    <p>Bridal ₹600</p>
+    <button class="send-to-tailor-btn" data-design-name="Bridal ₹600">Send</button>
   </div>
 
   <div class="card simple">
     <img src="blouse3.jpeg" onclick="openImage(this.src)">
-    <p>Simple Design</p>
-    <p class="price">₹500</p>
-    <button class="send-to-tailor-btn" data-design-name="Simple Design ₹500">Send to Tailor</button>
-  </div>
-
-  <div class="card simple">
-    <img src="blouse6.jpeg" onclick="openImage(this.src)">
-    <p>Simple Design</p>
-    <p class="price">₹550</p>
-    <button class="send-to-tailor-btn" data-design-name="Simple Design ₹550">Send to Tailor</button>
+    <p>Simple ₹500</p>
+    <button class="send-to-tailor-btn" data-design-name="Simple ₹500">Send</button>
   </div>
 
   <div class="card party">
     <img src="blouse4.jpeg" onclick="openImage(this.src)">
-    <p>Party Wear</p>
-    <p class="price">₹600</p>
-    <button class="send-to-tailor-btn" data-design-name="Party Wear ₹600">Send to Tailor</button>
-  </div>
-
-  <div class="card party">
-    <img src="blouse7.jpeg" onclick="openImage(this.src)">
-    <p>Party Wear</p>
-    <p class="price">₹800</p>
-    <button class="send-to-tailor-btn" data-design-name="Party Wear ₹800">Send to Tailor</button>
-  </div>
-
-  <div class="card party">
-    <img src="blouse10.jpeg" onclick="openImage(this.src)">
-    <p>Latest Design</p>
-    <p class="price">₹650</p>
-    <button class="send-to-tailor-btn" data-design-name="Latest Design ₹650">Send to Tailor</button>
+    <p>Party ₹600</p>
+    <button class="send-to-tailor-btn" data-design-name="Party ₹600">Send</button>
   </div>
 
 </div>
+
+<!-- REVIEWS -->
+<div class="reviews">
+  <h2>⭐ Customer Reviews</h2>
+  <div class="review-card">"Perfect stitching!" - Lakshmi</div>
+  <div class="review-card">"Very affordable!" - Kavya</div>
+</div>
+
+<!-- LOCATION -->
+<div class="location">
+  <h2>📍 Visit Our Shop</h2>
+  <iframe src="https://maps.google.com/maps?q=Tumkur&output=embed"
+    width="90%" height="300"></iframe>
+</div>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/919916486812" class="whatsapp-float">💬</a>
 
 <!-- POPUP -->
 <div id="popup">
@@ -337,63 +260,43 @@
 <div id="leadFormModal">
   <div class="modal-content">
     <span class="close">&times;</span>
-    <h2>Send Your Design</h2>
     <form id="leadForm">
-      <input type="text" id="name" placeholder="Your Name" required>
-      <input type="tel" id="phone" placeholder="Phone Number" required>
-      <input type="text" id="design" readonly>
-      <textarea id="notes" placeholder="Any custom request"></textarea>
-      <button type="submit">Send to WhatsApp</button>
+      <input id="name" placeholder="Name" required>
+      <input id="phone" placeholder="Phone" required>
+      <input id="design" readonly>
+      <button>Send to WhatsApp</button>
     </form>
   </div>
 </div>
 
 <script>
 function openImage(src) {
-  document.getElementById("popup").style.display = "flex";
-  document.getElementById("popupImg").src = src;
+  popup.style.display = "flex";
+  popupImg.src = src;
 }
 
-document.getElementById("backBtn").onclick = () => {
-  document.getElementById("popup").style.display = "none";
-};
+backBtn.onclick = () => popup.style.display = "none";
 
-function filterDesign(category) {
-  let cards = document.getElementsByClassName("card");
-  for (let i = 0; i < cards.length; i++) {
-    cards[i].style.display =
-      category === "all" || cards[i].classList.contains(category)
-        ? "block"
-        : "none";
-  }
+function filterDesign(cat) {
+  let cards = document.querySelectorAll(".card");
+  cards.forEach(c => {
+    c.style.display = (cat === "all" || c.classList.contains(cat)) ? "block" : "none";
+  });
 }
 
-const modal = document.getElementById("leadFormModal");
-const closeBtn = document.querySelector(".close");
-const designButtons = document.querySelectorAll(".send-to-tailor-btn");
-
-designButtons.forEach(btn => {
+document.querySelectorAll(".send-to-tailor-btn").forEach(btn => {
   btn.onclick = () => {
-    document.getElementById("design").value = btn.dataset.designName;
-    modal.style.display = "flex";
+    design.value = btn.dataset.designName;
+    leadFormModal.style.display = "flex";
   };
 });
 
-closeBtn.onclick = () => modal.style.display = "none";
+document.querySelector(".close").onclick = () => leadFormModal.style.display = "none";
 
-document.getElementById("leadForm").onsubmit = function(e) {
+leadForm.onsubmit = e => {
   e.preventDefault();
-  let name = document.getElementById("name").value;
-  let phone = document.getElementById("phone").value;
-  let design = document.getElementById("design").value;
-  let notes = document.getElementById("notes").value;
-
-  let msg = `Hi, I’m ${name}. I selected ${design}. Phone: ${phone}. ${notes}`;
-  let url = `https://wa.me/919916486812?text=${encodeURIComponent(msg)}`;
-
-  window.open(url, "_blank");
-  modal.style.display = "none";
-  this.reset();
+  let msg = `Hi I selected ${design.value}`;
+  window.open(`https://wa.me/919916486812?text=${encodeURIComponent(msg)}`);
 };
 </script>
 
