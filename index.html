@@ -290,7 +290,12 @@ const designInput = document.getElementById("design");
 
 document.querySelectorAll(".send-btn").forEach(btn => {
   btn.onclick = () => {
-    designInput.value = btn.dataset.design;
+    let design = btn.dataset.design;
+    let img = btn.dataset.img;
+
+    document.getElementById("design").value = design;
+    document.getElementById("design").setAttribute("data-img", img);
+
     modal.classList.add("active");
   };
 });
@@ -305,10 +310,14 @@ document.getElementById("leadForm").onsubmit = function(e){
   let name = document.getElementById("name").value;
   let phone = document.getElementById("phone").value;
   let design = document.getElementById("design").value;
+  let img = document.getElementById("design").getAttribute("data-img");
 
-  let msg = `Hi, I am ${name}. I selected ${design}. Phone: ${phone}`;
+  let msg = `Hi, I am ${name}.
+I selected ${design}
+Image: ${img}
+Phone: ${phone}`;
 
-  window.open(`https://wa.me/918217417571?text=${encodeURIComponent(msg)}`);
+  window.open(`https://wa.me/919916486812?text=${encodeURIComponent(msg)}`);
 
   modal.classList.remove("active");
 };
